@@ -1,0 +1,183 @@
+---
+title: "Make Your VSCode Better: A Cleaner, Minimalist, and Efficient Setup"
+slug: "make-your-vscode-better-a-cleaner-minimalist-and-efficient-setup"
+category: "Development"
+tags: ["Development", "VSCode", "Minimalist", "Efficient"]
+summary: "Visual Studio Code (VSCode) is a highly customizable code editor that can be tailored to your preferences, making it look cleaner, more minimalistic, and highly efficient. By editing the settings.json file and installing a few key extensions, you can transform VSCode into the ultimate coding environment. In this article, I will guide you through the steps to achieve this setup."
+image: "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ultAMXR9leFdTJpm2zkhIA.jpeg"
+imageBy: "Unsplash"
+date: 2024-11-16
+author: Mohammed Kareem
+jobTitle: Software Engineer
+avatar: https://lh3.googleusercontent.com/a/ACg8ocJ7rNt1e-Pp_Pt_KbnrToEIGY4jUg1kSVopQmXACWZ28hLD1Us=s576-c-no
+---
+
+# Step 1: Install Essential Extensions
+
+Before diving into the configuration, let’s install some essential extensions that will enhance your VSCode experience:
+
+## 1. Apc Customize UI++
+
+- This extension allows you to customize various UI elements in VSCode.
+- Install it from the VSCode Marketplace.
+
+## 2. Catppuccin Icons for VSCode
+
+
+- Provides a beautiful set of icons for your VSCode.
+
+## 3. Catppuccin for VSCode
+
+- Aesthetic theme that enhances the look and feel of VSCode.
+- Install it from the VSCode Marketplace.
+
+# Step 2: Customize settings.json
+
+To make VSCode cleaner and more minimalistic, we will edit the settings.json file. You can open this file by pressing Cmd + Shift + P, and then search for settings.json and click to open it.
+
+## Color Customizations
+
+Add the following settings to customize the colors and appearance:
+
+```json
+"workbench.colorCustomizations": {
+    "editor.background": "#21222f",
+    "sideBar.background": "#21222f",
+    "activityBar.background": "#21222f",
+    "actionBar.toggledBackground": "#21222f",
+    "activityBarTop.background": "#21222f",
+    "statusBar.background": "#21222f",
+    "titleBar.activeBackground": "#21222f",
+    "titleBar.inactiveBackground": "#21222f",
+    "panel.background": "#21222f",
+    "editorGroupHeader.tabsBackground": "#21222f",
+    "editorGroupHeader.tabsBorder": "#21222f",
+    "editorGroup.border": "#21222f",
+    "editorGroup.dropBackground": "#21222f",
+    "editorGroupHeader.noTabsBackground": "#21222f",
+    "editorGroupHeader.border": "#21222f",
+    "editorGroup.focusedEmptyBorder": "#21222f",
+    "editorGroup.emptyBackground": "#21222f",
+    "editorGroupHeader.tabsEmptyBackground": "#21222f",
+    "tab.activeBackground": "#303148",
+    "tab.inactiveBackground": "#21222f",
+    "tab.inactiveForeground": "#555875",
+    "tab.border": "#21222f",
+    "tab.activeBorder": "#21222f",
+    "tab.unfocusedActiveBorder": "#21222f",
+    "tab.activeBorderTop": "#21222f",
+    "tab.unfocusedActiveBorderTop": "#21222f",
+    "tab.hoverBackground": "#21222f",
+    "tab.unfocusedHoverBackground": "#21222f",
+    "tab.hoverBorder": "#21222f",
+    "tab.unfocusedHoverBorder": "#21222f",
+    "tab.activeModifiedBorder": "#21222f",
+    "tab.inactiveModifiedBorder": "#21222f",
+    "tab.unfocusedActiveModifiedBorder": "#21222f",
+    "tab.unfocusedInactiveModifiedBorder": "#21222f",
+    "dropdown.background": "#21222f",
+    "input.background": "#2e3045",
+    "input.border": "#3e425e",
+    "inputOption.activeBackground": "#21222f",
+    "inputOption.activeBorder": "#21222f",
+    "inputOption.activeForeground": "#e5e9ff",
+    "button.background": "#2344ff",
+    "button.foreground": "#ffffff",
+    "terminal.background": "#21222f",
+    "editorLineNumber.activeForeground": "#fdad51",
+    "menu.background": "#21222f",
+    "editorPane.background": "#21222f",
+    "editor.selectionBackground": "#383c52",
+    "panel.border": "#383c52",
+    "sideBar.border": "#383c52",
+    "scrollbar.shadow": "#21222f",
+    "editorStickyScroll.border": "#2d3042",
+    "editor.lineHighlightBackground": "#2d3042",
+    "editorGutter.background": "#21222f",
+    "editorGutter.modifiedBackground": "#21222f",
+    "editorGutter.addedBackground": "#21222f",
+    "editorGutter.deletedBackground": "#21222f",
+    "statusBarItem.remoteBackground": "#9190ff",
+    "focusBorder": "#21222f",
+    "scrollbarSlider.background": "#383c52",
+    "scrollbarSlider.activeBackground": "#535a7c",
+    "scrollbarSlider.hoverBackground": "#474c69"
+},
+```
+
+## Scrollbar Customizations
+
+Minimize and customize the scrollbars:
+
+```json
+"editor.scrollbar.verticalScrollbarSize": 10,
+"editor.scrollbar.horizontalScrollbarSize": 10,
+"editor.scrollbar.vertical": "visible",
+"editor.scrollbar.horizontal": "visible",
+```
+
+## APC Customize UI Settings
+
+Further customize the UI using APC Customize UI:
+
+```json
+"apc.electron": {
+    "backgroundColor": "#1a1a1a",
+    "frame": true,
+    "transparent": true,
+    "titleBarStyle": "hiddenInset",
+    "vibrancy": "ultra-dark",
+    "trafficLightPosition": {
+        "x": 15,
+        "y": 13
+    },
+    "trafficLightPositionRight": {
+        "x": 15,
+        "y": 13
+    }
+},
+```
+
+## Additional Customizations
+
+Add these lines to further enhance your VSCode:
+
+```json
+"workbench.iconTheme": "catppuccin-mocha",
+"workbench.sideBar.location": "right",
+"editor.fontFamily": "Hack Nerd Font, monospace, 'Courier New'",
+"apc.font.family": "GohuFont uni14 Nerd Font Mono",
+"apc.header": {
+    "compact": 22,
+    "fontSize": 12,
+    "fontWeight": "bold"
+},
+"apc.sidebar.titlebar": {
+    "fontSize": 11,
+    "fontWeight": "bold"
+},
+"apc.stylesheet": {
+    ".tabs-container .tab.active": {
+        "border-radius": "7px !important"
+    },
+    ".scrollbar": {
+        "background": "#21222f !important"
+    }
+},
+"css.completion.triggerPropertyValueCompletion": false,
+"github.copilot.chat.terminalChatLocation": "terminal",
+"breadcrumbs.enabled": false,
+"workbench.editor.editorActionsLocation": "hidden",
+"window.density.editorTabHeight": "compact",
+"editor.minimap.enabled": false,
+"[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"workbench.activityBar.location": "bottom",
+"workbench.layoutControl.enabled": false,
+"window.commandCenter": false,
+"apc.menubar.compact": true
+```
+
+By following the steps outlined above and adding the provided settings to your settings.json, you can achieve a cleaner, minimalist, and more efficient VSCode setup. This setup not only enhances the aesthetics of your coding environment but also improves your productivity by reducing distractions.
+
