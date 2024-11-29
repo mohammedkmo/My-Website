@@ -44,6 +44,7 @@ export default {
               width: '100%',
               backgroundColor: 'transparent',
               color: 'inherit',
+              fontFamily: 'var(--font-geist-mono)',
             },
             code: {
               color: '#e5e7eb',

@@ -76,7 +76,7 @@ export default function CodeBlock({ children, className }: CodeBlockProps) {
                             backgroundColor: '#000',
                             fontSize: '0.875rem',
                             lineHeight: '1.5',
-                            fontFamily: geistMono.style.fontFamily,
+                            fontFamily: 'var(--font-geist-mono)', 
                             borderRadius: '0.5rem',
                         }}
                         wrapLongLines={true}
