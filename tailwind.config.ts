@@ -51,7 +51,6 @@ export default {
               padding: '0.2rem 0.4rem',
               borderRadius: '0.25rem',
               fontWeight: '400',
-              fontFamily: 'Geist Mono',
             },
             img: {
               borderRadius: '0.4rem',
