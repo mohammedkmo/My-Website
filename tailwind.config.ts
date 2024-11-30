@@ -21,8 +21,8 @@ export default {
         screens: {
           sm: "640px",
           md: "768px",
-          lg: "800px",
-          xl: "800px",
+          lg: "768px",
+          xl: "768px",
         },
       },
       typography: {

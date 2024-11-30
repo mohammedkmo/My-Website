@@ -3,13 +3,6 @@
 import { useState, useCallback } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Geist_Mono } from 'next/font/google';
-
-const geistMono = Geist_Mono({
-    subsets: ['latin'],
-    weight: ['400', '500', '600', '700'],
-    variable: '--font-geist-mono',
-});
 
 interface CodeBlockProps {
     children: string;
@@ -35,7 +28,7 @@ export default function CodeBlock({ children, className }: CodeBlockProps) {
     }, [children]);
 
     return (
-        <div className="not-prose relative my-8">
+        <div className="not-prose relative">
             <div className="relative h-full border border-white/10 rounded-lg overflow-hidden group">
                 <div className="absolute right-2 top-2 z-10">
                     <button
@@ -74,12 +67,10 @@ export default function CodeBlock({ children, className }: CodeBlockProps) {
                             margin: 0,
                             padding: '1rem',
                             backgroundColor: '#000',
-                            fontSize: '0.875rem',
-                            lineHeight: '1.5',
-                            fontFamily: 'var(--font-geist-mono)', 
+                            fontSize: '0.8rem',
+                            fontFamily: 'monospace', 
                             borderRadius: '0.5rem',
                         }}
-                        wrapLongLines={true}
                     >
                         {children}
                     </SyntaxHighlighter>

@@ -22,14 +22,15 @@ export default function Home() {
       </section>
 
       {/* about me */}
-      <section className="grid grid-cols-1 md:grid-cols-2 w-full py-16 gap-8 container">
+      <section className=" w-full py-16 space-y-8 container">
         <h1 className={`text-6xl md:text-8xl font-bold mb-8 ${dmSerifText.className} text-primary`}>About Me</h1>
         <p className="text-secondary  text-sm">Self-driven and detail-oriented Software Engineer with substantial experience in app development and managing entire testing lifecycle and configuration process for customized software solutions. Ability to function in team-based collaborations and demonstrate outstanding attention to detail in partnering with developers, clients, QA and support engineers throughout the project lifecycle. Skilled in advanced software development methodologies, innovative tools, and agile processes contributing to the design and launch of user-friendly software, web and mobile applications. Valued for driving quality and consistency as well as meeting all time-sensitive development objectives. Multilingual professional with outstanding communication skills, capable of building sustainable relationships with high-end industrial clients.</p>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 py-16 container">
+      {/* posts */}
+      <section className="py-16 container space-y-8">
         <div className="flex flex-col items-start justify-start">
-          <h1 className={`text-6xl md:text-8xl font-bold mb-8 ${dmSerifText.className} text-primary`}>Posts</h1>
+          <h1 className={`text-6xl md:text-8xl font-bold ${dmSerifText.className} text-primary`}>Posts</h1>
           <p className="text-secondary">Here are some of my posts</p>
         </div>
         <div className="grid grid-cols-1 space-y-8">

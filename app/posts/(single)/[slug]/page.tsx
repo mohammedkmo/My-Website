@@ -61,14 +61,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function PostPage({ params }: PageProps) {
     const slug = (await params).slug;
     const post = await allPosts.find((post: any) => post.slug === slug);
+
+    const readingTime = Math.ceil(post?.mdx.split(' ').length / 250);
+
     return (
         <main className="w-full">
             <div className="container py-8">
                 <h1 className={`text-4xl md:text-8xl font-bold ${dmSerifText.className} text-primary`}>{post?.title}</h1>
 
+              
+            
+                  
+              
+
                 <div className="flex items-center justify-between w-full mt-8">
                     <div className="flex items-center gap-2">
-                        <div className="w-12 h-12 rounded-full overflow-hidden">
+                        <div className="w-8 h-8 rounded-full overflow-hidden">
                             <Image src={post?.avatar} alt={post?.author} width={1000} height={1000} className="w-full h-full object-cover" />
                         </div>
                         <div>
@@ -76,7 +84,10 @@ export default async function PostPage({ params }: PageProps) {
                             <p className="text-xs text-gray-400">{post!.jobTitle}</p>
                         </div>
                     </div>
-                    <p className="text-xs text-gray-400">{formatDate(post!.date)}</p>
+                    <div className="flex flex-col items-end">
+                        <p className="text-xs text-gray-400">{formatDate(post!.date)}</p>
+                        <p className="text-xs text-gray-400">{readingTime} min read</p>
+                    </div>
                 </div>
                 <div className="flex flex-col items-center gap-2 mt-8">
                     <div className="w-full h-96 rounded-lg overflow-hidden">
@@ -84,17 +95,28 @@ export default async function PostPage({ params }: PageProps) {
                     </div>
                     <p className="text-xs text-gray-400">Image by {post?.imageBy}</p>
                 </div>
-                <div className="mt-8">
-                    <p className="text-sm">{post?.summary}</p>
-                </div>
                 <div className="prose prose-pre:p-0 prose-pre:rounded-lg prose-pre:py-2 prose-pre:px-3 prose-img:rounded-lg max-w-none mt-8">
+
+                <h2 className={`text-sm mb-8 font-mono`}>
+                        {post?.summary}
+                    </h2>
                     <MDXContent code={post!.mdx} components={{
                         code: ({ children, className, ...props }: any) => (
                             <CodeBlock children={children as string} className={className} {...props} />
                         )
                     }} />
                 </div>
+
+
                 <div className="flex items-center gap-2 mt-8">
+                    <p className="text-sm text-primary">Category:</p>
+                    <Link className="text-xs bg-secondary text-black px-2 py-1 rounded-md font-mono cursor-pointer hover:bg-primary/80 transition-all duration-300" href={`/posts/category/${post?.category}`}>
+                        {post?.category}
+                    </Link>
+                </div>
+
+
+                <div className="flex items-center gap-2 mt-4">
                     <p className="text-sm text-primary">Tags:</p>
                     {
                         post?.tags.map((tag: string) => (
@@ -102,6 +124,8 @@ export default async function PostPage({ params }: PageProps) {
                         ))
                     }
                 </div>
+
+ 
             </div>
 
 

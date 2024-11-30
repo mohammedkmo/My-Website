@@ -10,15 +10,23 @@ const dmSerifText = DM_Serif_Text({
   weight: '400',
 });
 
-export default async function PostsPage() {
+interface PageProps {
+  params: Promise<{
+    tag: string;
+  }>;
+}
+
+export default async function PostsTagPage({ params }: PageProps) {
+  const tag = (await params).tag;
+  const posts = allPosts.filter((post: any) => post.tags.includes(tag));
   return (
-    <main className="py-16 container space-y-8">
+    <main className="py-16 container space-y-8 min-h-[calc(100vh-10rem)]">
     <div className="flex flex-col items-start justify-start">
-      <h1 className={`text-6xl md:text-8xl font-bold ${dmSerifText.className} text-primary`}>Posts</h1>
-      <p className="text-secondary">Here are some of my posts</p>
+      <h1 className={`text-6xl md:text-8xl font-bold ${dmSerifText.className} text-primary`}>{tag}</h1>
+      <p className="text-secondary">Here are some of my posts with the tag {tag}</p>
     </div>
     <div className="grid grid-cols-1 space-y-8">
-      {allPosts.map((post: any) => (
+      {posts.map((post: any) => (
         <div key={post._meta.path} className="group w-full">
           <Link href={`/posts/${post.slug}`}>
             <h1 className={`text-xl font-bold group-hover:text-white ${dmSerifText.className} text-primary`}>{post.title}</h1>

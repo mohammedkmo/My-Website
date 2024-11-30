@@ -9,21 +9,21 @@ const dmSerifText = DM_Serif_Text({
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-sm bg-dark-black/30">
-      <div className="container flex items-center justify-between py-4">
-        <Link href="/" className={`text-2xl font-bold ${dmSerifText.className} text-primary`}>
-          MK
+    <header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-dark-black/60">
+      <div className="container flex items-center justify-between py-2">
+        <Link href="/" className={` ${dmSerifText.className} `}>
+          <h1 className={`text-primary text-2xl ${dmSerifText.className}`}>Mohammed K.</h1>
         </Link>
         
         <nav>
           <ul className="flex items-center space-x-8">
             <li>
-              <Link href="/" className="text-secondary hover:text-primary transition-colors">
+              <Link href="/" className="text-secondary text-sm hover:text-primary transition-colors">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/posts" className="text-secondary hover:text-primary transition-colors">
+              <Link href="/posts" className="text-secondary text-sm hover:text-primary transition-colors">
                 Posts
               </Link>
             </li>
