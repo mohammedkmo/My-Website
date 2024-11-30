@@ -13,8 +13,14 @@ const dmSerifText = DM_Serif_Text({
     weight: ['400'],
 });
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const { slug } = await params;
+interface PageProps {
+    params: {
+        slug: string;
+    };
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { slug } = params;
     const post = allPosts.find((post: any) => post.slug === slug);
     return {
         title: post?.title,
@@ -26,13 +32,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description: post?.summary,
             url: `https://mohammedk.me/posts/${post?.slug}`,
         },
-
     };
 }
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-
-    const { slug } = await params;
+export default async function PostPage({ params }: PageProps) {
+    const { slug } = params;
     const post = allPosts.find((post: any) => post.slug === slug);
     return (
         <main className="w-full">
