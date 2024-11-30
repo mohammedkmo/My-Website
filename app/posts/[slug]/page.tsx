@@ -31,8 +31,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         openGraph: {
             title: post?.title,
             description: post?.summary,
+            images: [{
+                url: post?.image,
+                width: 1200,
+                height: 630,
+                alt: post?.title
+            }],
             url: `https://mohammedk.me/posts/${post?.slug}`,
+            type: 'article',
+            siteName: 'Mohammed K',
         },
+        twitter: {
+            card: 'summary_large_image',
+            title: post?.title,
+            description: post?.summary,
+            images: [post?.image],
+            creator: '@mohammedk_me'
+        },
+        alternates: {
+            canonical: `https://mohammedk.me/posts/${post?.slug}`
+        },
+        robots: {
+            index: true,
+            follow: true
+        }
     };
 }
 
