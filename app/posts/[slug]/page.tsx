@@ -15,12 +15,12 @@ const dmSerifText = DM_Serif_Text({
 
 interface PageProps {
     params: {
-        slug: string;
+        slug: Promise<{ slug: string }>;
     };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { slug } = params;
+    const slug = (await params).slug;
     const post = allPosts.find((post: any) => post.slug === slug);
     return {
         title: post?.title,
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function PostPage({ params }: PageProps) {
-    const { slug } = params;
+    const slug = (await params).slug;
     const post = allPosts.find((post: any) => post.slug === slug);
     return (
         <main className="w-full">
