@@ -6,6 +6,7 @@ import { MDXContent } from "@content-collections/mdx/react";
 import CodeBlock from "@/components/CodeBlock";
 import { DM_Serif_Text } from "next/font/google";
 import { Metadata } from "next";
+import { promises } from "dns";
 
 const dmSerifText = DM_Serif_Text({
     subsets: ['latin'],
@@ -14,14 +15,14 @@ const dmSerifText = DM_Serif_Text({
 });
 
 interface PageProps {
-    params: {
-        slug: Promise<{ slug: string }>;
-    };
+    params: Promise<{
+        slug: string;
+    }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const slug = (await params).slug;
-    const post = allPosts.find((post: any) => post.slug === slug);
+    const post = await allPosts.find((post: any) => post.slug === slug);
     return {
         title: post?.title,
         description: post?.summary,
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PostPage({ params }: PageProps) {
     const slug = (await params).slug;
-    const post = allPosts.find((post: any) => post.slug === slug);
+    const post = await allPosts.find((post: any) => post.slug === slug);
     return (
         <main className="w-full">
             <div className="container py-8">
