@@ -361,7 +361,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
           </div>
         </div>
         
-        <div ref={terminalRef} className="p-4 h-[500px] overflow-y-auto scrollbar-hide backdrop-blur-sm border-t border-foreground/20">
+        <div ref={terminalRef} className="p-4 h-[500px] overflow-y-auto scrollbar-hide scroll-smooth scroll-p-10 border-t border-foreground/20">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
