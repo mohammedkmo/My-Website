@@ -113,6 +113,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
               { cmd: "posts", desc: "Browse my writings" },
               { cmd: "exp", desc: "View my experience" },
               { cmd: "skills", desc: "Check out my skills" },
+              { cmd: "resume", desc: "View my resume" },
               { cmd: "clear", desc: "Clear terminal" },
               { cmd: "help", desc: "Show this help message" }
             ].map((item, index) => (
@@ -149,7 +150,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
             {[
               {
                 title: "Full Stack Software Engineer - freelancer",
-                period: "2024 - present",
+                period: "2014 - present",
                 desc: "Worked with a range of large and small agencies, start-ups and individuals to build products. Clients included TNFX, Miss Iraq Org, Uniborsa, IDB bank ...",
                 tech: "Nginx • MySQL • Laravel • Flutter • Svelte • ReactJS • VueJS"
               },
@@ -175,6 +176,27 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
                 <p className="text-gray-500 mt-2">{job.tech}</p>
               </motion.div>
             ))}
+          </motion.div>
+        );
+        break;
+      case "resume":
+        commandResponse = (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            key={`response-${history.length}`} 
+            className="mb-4"
+          >
+            <Link 
+              href="https://link.mohammedk.me/resume" 
+              target="_blank" 
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 text-gray-400 hover:text-primary rounded-md transition-all duration-300 group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform duration-300">📄</span>
+              <span className="text-sm">Get my resume</span>
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+            </Link>
           </motion.div>
         );
         break;
