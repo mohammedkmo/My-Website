@@ -11,8 +11,12 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: "Mohammed's Blog",
-  description: "A blog about software development",
+  title: "Mohammed Kareem",
+  description: "Software Engineer",
+  icons: {
+    icon: "/favicon.ico",
+  },
+  themeColor: "#000000",
 };
 
 export default function RootLayout({

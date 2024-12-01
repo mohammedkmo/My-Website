@@ -66,15 +66,7 @@ export default async function PostPage({ params }: PageProps) {
 
     return (
         <main className="w-full">
-            <Link 
-                href="/"
-                className="fixed top-4 left-4 z-50 bg-black/80 p-2 rounded-lg border border-foreground/20 hover:bg-black/60 transition-all duration-300"
-                title="Back to Terminal"
-            >
-                <Terminal className="w-6 h-6 text-primary" />
-            </Link>
-
-            <div className="container py-8">
+            <div className="container py-20">
                 <div className="">
                     <h1 className={`text-4xl md:text-8xl font-bold ${dmSerifText.className} text-primary`}>{post?.title}</h1>
                     <div className="flex items-center justify-between mt-8">
