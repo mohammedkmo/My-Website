@@ -87,7 +87,7 @@ export default async function PostPage({ params }: PageProps) {
                 </div>
 
                 <div className="flex flex-col items-center gap-2 mt-8">
-                    <div className="w-full h-96 rounded-lg overflow-hidden">
+                    <div className="w-full aspect-video rounded-lg overflow-hidden">
                         <Image src={post!.image} alt={post!.title} width={1000} height={1000} className="w-full h-full object-cover" />
                     </div>
                     <p className="text-xs text-gray-400">Image by {post?.imageBy}</p>
@@ -127,7 +127,7 @@ export default async function PostPage({ params }: PageProps) {
                         {
                             allPosts.filter((p: any) => p.slug !== post?.slug).slice(0, 3).map((post: any) => (
                                 <Link href={`/posts/${post.slug}`} key={post.slug} className="flex flex-col gap-2 group">
-                                    <div className="w-full h-36 rounded-lg overflow-hidden">
+                                    <div className="w-full aspect-video rounded-lg overflow-hidden">
                                         <Image src={post.image} alt={post.title} width={1000} height={1000} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" />
                                     </div>
                                     <h1 className={`text-lg font-bold text-secondary group-hover:underline group-hover:text-primary transition-all duration-300 ${dmSerifText.className}`}>{post.title}</h1>
