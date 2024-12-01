@@ -6,12 +6,33 @@ import { formatDate } from "@/utils/helpers";
 import { Terminal as TerminalIcon, Mail, Linkedin, Github, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { Geist_Mono } from "next/font/google";
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+});
 
 interface TerminalProps {
   initialMessage?: string;
 }
 
 export default function Terminal({ initialMessage = "Welcome to my terminal! Type 'help' to see available commands." }: TerminalProps) {
+  const ascii = `
+███╗   ███╗ ██████╗ ██╗  ██╗ █████╗ ███╗   ███╗███╗   ███╗███████╗██████╗ 
+████╗ ████║██╔═══██╗██║  ██║██╔══██╗████╗ ████║████╗ ████║██╔════╝██╔══██╗
+██╔████╔██║██║   ██║███████║███████║██╔████╔██║██╔████╔██║█████╗  ██║  ██║
+██║╚██╔╝██║██║   ██║██╔══██║██╔══██║██║╚██╔╝██║██║╚██╔╝██║██╔══╝  ██║  ██║
+██║ ╚═╝ ██║╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║██║ ╚═╝ ██║███████╗██████╔╝
+╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝     ╚═╝╚══════╝╚═════╝ 
+                                                                            
+██╗  ██╗ █████╗ ██████╗ ███████╗███████╗███╗   ███╗                        
+██║ ██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗ ████║                        
+█████╔╝ ███████║██████╔╝█████╗  █████╗  ██╔████╔██║                        
+██╔═██╗ ██╔══██║██╔══██╗██╔══╝  ██╔══╝  ██║╚██╔╝██║                        
+██║  ██╗██║  ██║██║  ██║███████╗███████╗██║ ╚═╝ ██║                        
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚═╝                        
+`;
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -53,7 +74,8 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
             key={`response-${history.length}`} 
             className="mb-4"
           >
-            <div className="mb-1 hover:bg-white/10 px-2 py-1 rounded transition-all duration-300 text-xs items-start gap-2">
+            <div className="mb-1  px-2 py-1 text-xs items-start gap-2">
+              <pre className="text-primary whitespace-pre font-mono text-sm">{ascii}</pre>
               <div className="text-sm leading-relaxed">
                 <p className="text-white">
                   Hey there! 👋 I'm Mohammed, a passionate Software Engineer who loves turning complex problems into elegant solutions.
@@ -128,7 +150,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.2, delay: index * 0.1 }}
                 key={item.cmd} 
-                className="hover:bg-white/10 px-2 py-1 rounded transition-all duration-300 text-xs"
+                className=" px-2 py-1 text-xs"
               >
                 <div className="flex items-center gap-2">
                   <span className="text-gray-400">{item.cmd}</span>
@@ -172,7 +194,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.2 }}
                 key={job.title} 
-                className="mb-4 hover:bg-white/10 px-2 py-1 rounded transition-all duration-300 text-xs"
+                className="mb-4 px-2 py-1 text-xs"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-white">{job.title}</span>
@@ -327,7 +349,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-3xl" 
+      className={`w-full max-w-3xl ${geistMono.className}`} 
       onClick={handleTerminalClick}
     >
       <div className="relative w-full border border-foreground/20 bg-black rounded-lg shadow-lg overflow-hidden text-gray-700">

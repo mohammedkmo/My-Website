@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 
 
-const geistMono = Geist_Mono({
+const geist = Geist({
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-geist',
 });
 
 
@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -27,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistMono.className}`}
+        className={`${geist.className}`}
       >
 
         {children}
