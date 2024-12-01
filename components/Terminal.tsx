@@ -15,9 +15,10 @@ const geistMono = Geist_Mono({
 
 interface TerminalProps {
   initialMessage?: string;
+  className?: string;
 }
 
-export default function Terminal({ initialMessage = "Welcome to my terminal! Type 'help' to see available commands." }: TerminalProps) {
+export default function Terminal({ initialMessage = "Welcome to my terminal! Type 'help' to see available commands.", className }: TerminalProps) {
   const ascii = `
 ███╗   ███╗ ██████╗ ██╗  ██╗ █████╗ ███╗   ███╗███╗   ███╗███████╗██████╗ 
 ████╗ ████║██╔═══██╗██║  ██║██╔══██╗████╗ ████║████╗ ████║██╔════╝██╔══██╗
@@ -352,8 +353,8 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
       className={`w-full max-w-3xl ${geistMono.className}`} 
       onClick={handleTerminalClick}
     >
-      <div className="relative w-full border border-foreground/20 bg-black rounded-lg shadow-lg overflow-hidden text-gray-700">
-        <div className="bg-black/80 p-2 flex items-center gap-2">
+      <div className="relative w-full border border-foreground/20 bg-black/40 backdrop-blur-lg rounded-lg shadow-lg overflow-hidden text-gray-700">
+        <div className="p-2 flex items-center gap-2">
           <div className="flex items-center gap-1.5">
             <div className="w-2 h-2 rounded-full bg-gray-500"></div>
             <div className="w-2 h-2 rounded-full bg-gray-500"></div>
@@ -361,7 +362,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
           </div>
         </div>
         
-        <div ref={terminalRef} className="p-4 h-[500px] overflow-y-auto scrollbar-hide scroll-smooth scroll-p-10 border-t border-foreground/20">
+        <div ref={terminalRef} className="p-4 h-[500px] overflow-y-auto scrollbar-hide scroll-smooth scroll-p-10 border-t border-foreground/20 scroll-style">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

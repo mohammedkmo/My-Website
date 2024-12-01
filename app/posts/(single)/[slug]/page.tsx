@@ -6,7 +6,6 @@ import { MDXContent } from "@content-collections/mdx/react";
 import CodeBlock from "@/components/CodeBlock";
 import { DM_Serif_Text } from "next/font/google";
 import { Metadata } from "next";
-import { Terminal } from "lucide-react";
 
 const dmSerifText = DM_Serif_Text({
     subsets: ['latin'],
