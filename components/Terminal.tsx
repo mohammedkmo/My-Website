@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { allPosts } from "content-collections";
 import { formatDate } from "@/utils/helpers";
 import { Terminal as TerminalIcon, Mail, Linkedin, Github, ChevronRight } from "lucide-react";
@@ -16,6 +16,13 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [output, setOutput] = useState<JSX.Element[]>([]);
+  const terminalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [output]);
 
   const handleCommand = (command: string) => {
     setHistory(prev => [...prev, command]);
@@ -46,23 +53,22 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
             key={`response-${history.length}`} 
             className="mb-4"
           >
-            <Link href="/about" className="flex mb-1 hover:bg-white/10 px-2 py-1 rounded transition-all duration-300 text-xs items-start gap-2">
-              <div className="bg-white/10 rounded-md">
-                <ChevronRight className="w-4 h-4 text-white" />
-              </div>
+            <div className="mb-1 hover:bg-white/10 px-2 py-1 rounded transition-all duration-300 text-xs items-start gap-2">
               <div className="text-sm leading-relaxed">
                 <p className="text-white">
-                  Self-driven and detail-oriented Software Engineer with a passion for crafting elegant solutions.
+                  Hey there! 👋 I'm Mohammed, a passionate Software Engineer who loves turning complex problems into elegant solutions.
                 </p>
                 <p className="text-gray-400 mt-2">
-                  My code is my canvas, and I paint with algorithms and data structures.
+                  With expertise in full-stack development, I specialize in building scalable web applications using modern technologies like React, Node.js, and TypeScript.
+                </p>
+                <p className="text-gray-400 mt-2">
+                  I'm deeply interested in system design, cloud architecture, and creating exceptional user experiences.
                 </p>
                 <p className="text-gray-500 mt-2">
-                  When I'm not pushing pixels or debugging, I'm exploring the endless possibilities of technology
-                  and collaborating with amazing developers to build the future.
+                  Beyond coding, I'm an avid learner who enjoys exploring new technologies, contributing to open-source projects, and sharing knowledge through technical writing.
                 </p>
               </div>
-            </Link>
+            </div>
           </motion.div>
         );
         break;
@@ -333,7 +339,7 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
           </div>
         </div>
         
-        <div className="p-4 h-[500px] overflow-y-auto scrollbar-hide backdrop-blur-sm border-t border-foreground/20">
+        <div ref={terminalRef} className="p-4 h-[500px] overflow-y-auto scrollbar-hide backdrop-blur-sm border-t border-foreground/20">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
