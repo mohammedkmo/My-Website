@@ -6,7 +6,7 @@ import { MDXContent } from "@content-collections/mdx/react";
 import CodeBlock from "@/components/CodeBlock";
 import { DM_Serif_Text } from "next/font/google";
 import { Metadata } from "next";
-import { promises } from "dns";
+import { Terminal } from "lucide-react";
 
 const dmSerifText = DM_Serif_Text({
     subsets: ['latin'],
@@ -66,29 +66,34 @@ export default async function PostPage({ params }: PageProps) {
 
     return (
         <main className="w-full">
+            <Link 
+                href="/"
+                className="fixed top-4 left-4 z-50 bg-black/80 p-2 rounded-lg border border-foreground/20 hover:bg-black/60 transition-all duration-300"
+                title="Back to Terminal"
+            >
+                <Terminal className="w-6 h-6 text-primary" />
+            </Link>
+
             <div className="container py-8">
-                <h1 className={`text-4xl md:text-8xl font-bold ${dmSerifText.className} text-primary`}>{post?.title}</h1>
-
-              
-            
-                  
-              
-
-                <div className="flex items-center justify-between w-full mt-8">
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full overflow-hidden">
-                            <Image src={post?.avatar} alt={post?.author} width={1000} height={1000} className="w-full h-full object-cover" />
+                <div className="">
+                    <h1 className={`text-4xl md:text-8xl font-bold ${dmSerifText.className} text-primary`}>{post?.title}</h1>
+                    <div className="flex items-center justify-between mt-8">
+                        <div className="flex items-center justify-center gap-2">
+                            <div className="w-8 h-8 rounded-full overflow-hidden">
+                                <Image src="/avatar.jpg" alt="Profile" width={24} height={24} className="w-full h-full object-cover rounded-full" />
+                            </div>
+                           <div>
+                                <p className="text-sm text-white font-bold">{post!.author}</p>
+                                <p className="text-xs text-gray-400">Software Engineer</p>
+                            </div>
                         </div>
-                        <div>
-                            <p className="text-sm text-white font-bold">{post!.author}</p>
-                            <p className="text-xs text-gray-400">{post!.jobTitle}</p>
+                        <div className="flex flex-col items-end">
+                            <p className="text-xs text-gray-400">{formatDate(post!.date)}</p>
+                            <p className="text-xs text-gray-400">{readingTime} min read</p>
                         </div>
-                    </div>
-                    <div className="flex flex-col items-end">
-                        <p className="text-xs text-gray-400">{formatDate(post!.date)}</p>
-                        <p className="text-xs text-gray-400">{readingTime} min read</p>
                     </div>
                 </div>
+
                 <div className="flex flex-col items-center gap-2 mt-8">
                     <div className="w-full h-96 rounded-lg overflow-hidden">
                         <Image src={post!.image} alt={post!.title} width={1000} height={1000} className="w-full h-full object-cover" />
@@ -96,8 +101,7 @@ export default async function PostPage({ params }: PageProps) {
                     <p className="text-xs text-gray-400">Image by {post?.imageBy}</p>
                 </div>
                 <div className="prose prose-pre:p-0 prose-pre:rounded-lg prose-pre:py-2 prose-pre:px-3 prose-img:rounded-lg max-w-none mt-8">
-
-                <h2 className={`text-sm mb-8 font-mono`}>
+                    <h2 className={`text-sm mb-8 font-mono`}>
                         {post?.summary}
                     </h2>
                     <MDXContent code={post!.mdx} components={{
@@ -107,14 +111,12 @@ export default async function PostPage({ params }: PageProps) {
                     }} />
                 </div>
 
-
                 <div className="flex items-center gap-2 mt-8">
                     <p className="text-sm text-primary">Category:</p>
                     <Link className="text-xs bg-secondary text-black px-2 py-1 rounded-md font-mono cursor-pointer hover:bg-primary/80 transition-all duration-300" href={`/posts/category/${post?.category}`}>
                         {post?.category}
                     </Link>
                 </div>
-
 
                 <div className="flex items-center gap-2 mt-4">
                     <p className="text-sm text-primary">Tags:</p>
@@ -124,11 +126,7 @@ export default async function PostPage({ params }: PageProps) {
                         ))
                     }
                 </div>
-
- 
             </div>
-
-
 
             <div className="mt-8 bg-mesh border-t border-gray-800 py-8">
                 <div className="container">

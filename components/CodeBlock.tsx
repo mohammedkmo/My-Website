@@ -71,6 +71,7 @@ export default function CodeBlock({ children, className }: CodeBlockProps) {
                             fontFamily: 'monospace', 
                             borderRadius: '0.5rem',
                         }}
+                        showLineNumbers={true}
                     >
                         {children}
                     </SyntaxHighlighter>

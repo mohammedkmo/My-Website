@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Geist } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { Geist_Mono } from "next/font/google";
 
-const geist = Geist({
+
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  variable: '--font-geist',
+  variable: '--font-geist-mono',
 });
 
 
@@ -24,11 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geist.className}`}
+        className={`${geistMono.className}`}
       >
-        <Header />
+
         {children}
-        <Footer />
       </body>
     </html>
   );
