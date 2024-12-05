@@ -217,15 +217,39 @@ export default function Terminal({ initialMessage = "Welcome to my terminal! Typ
             key={`response-${history.length}`} 
             className="mb-4"
           >
-            <Link 
-              href="https://link.mohammedk.me/resume" 
-              target="_blank" 
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-primary/20 text-gray-400 hover:text-primary rounded-md transition-all duration-300 group"
-            >
-              <span className="group-hover:translate-x-1 transition-transform duration-300">📄</span>
-              <span className="text-sm">Get my resume</span>
-              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
-            </Link>
+            <div className="text-gray-400 text-sm font-mono">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                $ Fetching Mohammed Kareem resume v3.pdf...
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 1 }}
+              >
+                $ Downloading file...
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 2 }}
+              >
+                $ Progress: [█████████████████████] 100%
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 3 }}
+                onAnimationComplete={() => {
+                  window.open("/files/Mohammed Kareem resume v3.pdf", "_blank");
+                }}
+              >
+                $ Download complete! Opening file...
+              </motion.div>
+            </div>
           </motion.div>
         );
         break;
